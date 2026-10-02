@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hong Kong District Boundaries</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Hong Kong’s 18 Districts</h1>
+      <p>Hover over a district to highlight it and see its name.</p>
+    </header>
+    <main>
+      <div id="map" aria-label="Map of Hong Kong district boundaries"></div>
+      <div id="status" role="status">Loading district boundaries…</div>
+      <button id="basemap-toggle" type="button" disabled>Use OpenStreetMap</button>
+    </main>
+    <div class="landsd-credit" aria-label="Map supplied by the Lands Department">
+      <span class="landsd-mark" aria-hidden="true">地</span>
+      <span>Map from Lands Department</span>
+    </div>
+    <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
