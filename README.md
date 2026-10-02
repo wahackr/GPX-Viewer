@@ -1,23 +1,22 @@
-# Hong Kong district boundary map
+# Trailglass GPX Viewer
 
-A small browser-based viewer for the 18 district polygons in
-`resources/hksar_18_district_boundary.json`. It uses the Hong Kong Lands
-Department WGS84 Vector Map API as its base map.
+A private, browser-based GPX viewer for inspecting tracks and routes on a map. Files are parsed locally and never uploaded to a server.
 
-## Run it
+## Features
 
-From this directory, start any static HTTP server. Python already includes one:
+- Drag-and-drop or browse for multiple `.gpx` files
+- Open ZIP archives containing GPX files
+- Display tracks, routes, and named waypoints
+- Calculate distance, elevation gain, and point count
+- Focus, hide, show, remove, or clear routes independently
+- Switch between OpenStreetMap and the HKSAR Lands Department basemap
+- Optionally show Hong Kong's 18 district boundaries
+- Export the current map as a PNG
+
+## Run locally
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Then open <http://localhost:8000/src/>.
-
-The page uses MapLibre GL JS and the Hong Kong Lands Department Vector Map API,
-so an internet connection is required for the map background. No API key is
-needed. Use of the government map is subject to the Lands Department Map API
-terms and attribution requirements.
-
-Do not open `src/index.html` directly as a `file://` URL: browsers commonly block
-the JavaScript request that loads the GeoJSON file.
+Then open <http://localhost:8000/src/>. An internet connection is required for map tiles and browser libraries.

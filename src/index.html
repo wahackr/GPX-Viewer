@@ -3,28 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hong Kong District Boundaries</title>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"
-    />
+    <meta name="theme-color" content="#17211b" />
+    <title>Trailglass — GPX Viewer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <h1>Hong Kong’s 18 Districts</h1>
-      <p>Hover over a district to highlight it and see its name.</p>
-    </header>
-    <main>
-      <div id="map" aria-label="Map of Hong Kong district boundaries"></div>
-      <div id="status" role="status">Loading district boundaries…</div>
-      <button id="basemap-toggle" type="button" disabled>Use OpenStreetMap</button>
-    </main>
-    <div class="landsd-credit" aria-label="Map supplied by the Lands Department">
-      <span class="landsd-mark" aria-hidden="true">地</span>
-      <span>Map from Lands Department</span>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="GPX viewer controls">
+        <header class="brand">
+          <div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M4 25 12 9l4 8 4-5 8 13H4Z"/><path d="m9 25 7-8 3 3 3-2 5 7"/></svg></div>
+          <div><h1>Trailglass</h1><p>GPX VIEWER</p></div>
+        </header>
+
+        <section id="drop-zone" class="drop-zone" tabindex="0" role="button" aria-label="Upload GPX or ZIP files">
+          <input id="gpx-upload" type="file" multiple accept=".gpx,.zip,application/gpx+xml,application/zip,application/xml,text/xml" />
+          <div class="upload-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 16V4m0 0L7 9m5-5 5 5M5 14v5h14v-5"/></svg></div>
+          <strong>Drop your route here</strong><span>or <u>browse GPX / ZIP</u></span><small>Your files stay on this device</small>
+        </section>
+
+        <div id="summary" class="summary" hidden>
+          <div><span>Distance</span><strong id="total-distance">—</strong></div>
+          <div><span>Elevation gain</span><strong id="total-ascent">—</strong></div>
+          <div><span>Tracks</span><strong id="track-count">0</strong></div>
+        </div>
+
+        <section class="routes-section">
+          <div class="section-heading"><h2>Your routes</h2><button id="clear-all" class="text-button" type="button" hidden>Clear all</button></div>
+          <div id="empty-routes" class="empty-routes">Upload a GPX file to explore its route, distance, elevation and waypoints.</div>
+          <div id="gpx-list" class="route-list"></div>
+        </section>
+
+        <footer class="sidebar-footer">
+          <label class="toggle-row"><span>District boundaries</span><input id="district-visibility" type="checkbox" /><i aria-hidden="true"></i></label>
+          <button id="basemap-toggle" class="footer-button" type="button" disabled>Switch to HKSAR map</button>
+        </footer>
+      </aside>
+
+      <main class="map-stage">
+        <div id="map" aria-label="Interactive GPX route map"></div>
+        <div class="topbar">
+          <div id="status" role="status">Preparing map…</div>
+          <button id="export-png" type="button" disabled aria-label="Export map as PNG"><svg viewBox="0 0 24 24"><path d="M12 4v11m0 0 4-4m-4 4-4-4M5 19h14"/></svg>Export map</button>
+        </div>
+        <div id="map-empty" class="map-empty"><div class="pulse-marker"><span></span></div><strong>Your adventure starts here</strong><p>Add a GPX file to draw your route on the map.</p></div>
+        <div class="map-credit">© OpenStreetMap contributors</div>
+      </main>
     </div>
     <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
