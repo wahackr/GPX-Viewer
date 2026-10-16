@@ -1,6 +1,6 @@
 const GOVERNMENT_STYLE_URL = "https://mapapi.geodata.gov.hk/gs/api/v1.0.0/vt/basemap/WGS84/resources/styles/root.json";
 const GOVERNMENT_TILE_URL = "https://mapapi.geodata.gov.hk/gs/api/v1.0.0/vt/basemap/WGS84/tile/{z}/{y}/{x}.pbf";
-const DISTRICT_URL = "../resources/hksar_18_district_boundary.json";
+const DISTRICT_URL = "resources/hksar_18_district_boundary.json";
 const DISTRICT_SOURCE = "hong-kong-districts";
 const COLORS = ["#df6b47", "#397c50", "#477bc0", "#9b5aaa", "#d29832", "#2c9292", "#ca4e6e"];
 const $ = (selector) => document.querySelector(selector);
